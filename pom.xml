@@ -4,7 +4,7 @@
 
   <groupId>io.github.cloudbeers</groupId>
   <artifactId>maven-continuous</artifactId>
-  <version>58-SNAPSHOT</version>
+  <version>98</version>
   <packaging>war</packaging>
 
   <name>maven-continuous Maven Webapp</name>
@@ -13,7 +13,7 @@
     <connection>scm:git:https://github.com:capitalterefe/mavenreleaseplugin.git</connection>
     <developerConnection>scm:git:https://github.com:capitalterefe/mavenreleaseplugin.git</developerConnection>
     <url>http://github.com:capitalterefe/mavenreleaseplugin</url>
-    <tag>maven-continuous-58</tag>
+    <tag>maven-continuous-98</tag>
   </scm>
 
   <properties>
