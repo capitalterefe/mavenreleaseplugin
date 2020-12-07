@@ -11,7 +11,7 @@
 
   <scm>
     <connection>scm:git:https://github.com:capitalterefe/mavenreleaseplugin.git</connection>
-    <developerConnection>scm:git:https://github.com:capitalterefe/mavenreleaseplugin</developerConnection>
+    <developerConnection>scm:git:https://github.com:capitalterefe/mavenreleaseplugin.git</developerConnection>
     <url>http://github.com:capitalterefe/mavenreleaseplugin</url>
     <tag>maven-continuous-58</tag>
   </scm>
