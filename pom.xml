@@ -4,14 +4,14 @@
 
   <groupId>io.github.cloudbeers</groupId>
   <artifactId>maven-continuous</artifactId>
-  <version>98</version>
+  <version>98-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>maven-continuous Maven Webapp</name>
 
   <scm>
     <connection>scm:git:https://github.com:capitalterefe/mavenreleaseplugin.git</connection>
-    <developerConnection>https://github.com/capitalterefe/mavenreleaseplugin.git</developerConnection>
+    <developerConnection>scm:git:https://github.com:capitalterefe/mavenreleaseplugin.git</developerConnection>
     <url>http://github.com:capitalterefe/mavenreleaseplugin</url>
     <tag>maven-continuous-98</tag>
   </scm>
@@ -69,7 +69,7 @@
         <artifactId>maven-release-plugin</artifactId>
         <configuration>
           <localCheckout>true</localCheckout>
-          <pushChanges>true</pushChanges>
+          <pushChanges>false</pushChanges>
           <preparationGoals>validate</preparationGoals>
         </configuration>
       </plugin>
