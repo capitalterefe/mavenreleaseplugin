@@ -45,7 +45,7 @@ pipeline {
                       echo xml
     def colors = new XmlSlurper().parseText(xml)
                   //echo colors
-    echo "First Color: ${colors.metadata[0]}" //works fine
+    echo "First Color: ${colors.versioning[0]}" //works fine
    // echo "First Color: ${colors.color[0]} Primary? ${colors.color[0]['@primary']}" 
 
                     
