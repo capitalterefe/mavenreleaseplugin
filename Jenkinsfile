@@ -9,9 +9,10 @@ pipeline {
     }
 
     stages {
+         def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout
         stage('Build') {
             steps {
-                def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout
+               
                 echo 'versionw ${version}'
                 echo 'Building..'
                 echo "version ${VERSION}"
