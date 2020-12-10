@@ -1,4 +1,4 @@
-def xml = "https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar".toURL().text
+def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
 def root = new XmlParser().parseText(xml)
 pipeline {
     agent any
