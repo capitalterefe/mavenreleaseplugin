@@ -7,7 +7,6 @@ pipeline {
     VERSION = readMavenPom().getVersion()
     GROUP = readMavenPom().getGroupId()
     }
-import groovy.json.JsonSlurper
 
 def getProjectVersion(){
   def file = readFile('pom.xml')
