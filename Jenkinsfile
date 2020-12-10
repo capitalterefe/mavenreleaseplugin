@@ -1,5 +1,9 @@
-def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
-def root = (new XmlParser().parseText(xml)).versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
+node(){
+    def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
+   def root = new XmlParser().parseText(xml))
+   print node.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
+    
+}
 pipeline {
     agent any
      
@@ -20,7 +24,7 @@ pipeline {
                
                 script{
                     
-                    echo "${root}"
+                    //echo "${root}"
                    
                   //  echo "${rversions}"
                     
