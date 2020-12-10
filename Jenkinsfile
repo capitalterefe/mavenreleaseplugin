@@ -28,8 +28,8 @@ pipeline {
                     def nexus_url="${host}/repository/public/${groupId}/${artifactId}/maven-metadata.xml"
                     def nexus_url2="https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml"
                     def metadata = new XmlParser().parseText(nexus_url2)
-                   metadatastr = metadata.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
-                    echo "metada: ${metadatastr}"
+                   //metadatastr = metadata.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
+                    echo "metada: ${metadata}"
 
                     }
                 }
