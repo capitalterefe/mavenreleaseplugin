@@ -44,7 +44,7 @@ pipeline {
                     def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
                       echo xml
     def colors = new XmlSlurper().parseText(xml)
-                  echo colors
+                  //echo colors
     echo "First Color: ${colors.metadata[0]}" //works fine
    // echo "First Color: ${colors.color[0]} Primary? ${colors.color[0]['@primary']}" 
 
