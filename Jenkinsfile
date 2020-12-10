@@ -8,17 +8,7 @@ pipeline {
     GROUP = readMavenPom().getGroupId()
     }
 
-def getProjectVersion(){
-  def file = readFile('pom.xml')
-  def project = new XmlSlurper().parseText(file)
-  return project.version.text()
-}
 
-def getReleaseVersion(String artifact) {
-  def modelMetaData = new XmlSlurper().parse("https://oss.sonatype.org/content/repositories/releases/${artifact}/maven-metadata.xml")
-  def version = modelMetaData.versioning.release.text()
-  return version
-}
     stages {
                      
         
@@ -27,8 +17,13 @@ def getReleaseVersion(String artifact) {
             steps {
                
                 script{
-                    versions=getProjectVersion()
-                    echo 'versioning $versions'
+                   def xml = "https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar".toURL().text
+
+def root = new XmlParser().parseText(xml)
+
+return root.data.artifact.collect {
+  "${it.groupId.text()}:${it.artifactId.text()}:${it.version.text()}"
+}
                      
                     }
                 }
