@@ -3,18 +3,7 @@ node(){
     
     
     
-    //def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
-  def xml = """ <testsuites status="Failure" count="5" duration="10">
-<testsuite status="Failure">
-<testcase>
-Simple example of xml file
-</testcase>
-</testsuite>
-</testsuites> """  
-  println xml
-  def root = new XmlParser().parseText(xml)
-    println 'root print'
-    println root.@status
+   // def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
  
   println "metadata"
  //   println root['@metadata']
@@ -52,18 +41,11 @@ pipeline {
                    
                    echo "hello builder"
                     
-                    def xml = """
-              <colors>
-                  <color primary="true">Red</color>
-                  <color primary="true">Yellow</color>
-                  <color primary="true">Blue</color>
-                  <color primary="false">Purple</color>
-              </colors>                    
-              """
+                    def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
 
     def colors = new XmlSlurper().parseText(xml)
-    echo "First Color: ${colors.color[0]}" //works fine
-    echo "First Color: ${colors.color[0]} Primary? ${colors.color[0]['@primary']}" 
+    echo "First Color: ${metadata.versioning[0]}" //works fine
+   // echo "First Color: ${colors.color[0]} Primary? ${colors.color[0]['@primary']}" 
 
                     
                 }
