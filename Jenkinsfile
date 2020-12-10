@@ -14,22 +14,22 @@ dogs.dog.each { dog ->
     
     
     
-    def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
-    println xml
-   def root = new XmlParser().parseText(xml)
-    println 'root print'
-    println root
+   // def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
+ //   println xml
+ //  def root = new XmlParser().parseText(xml)
+ //   println 'root print'
+ //   println root
  
-   println "metadata"
-    println root['@metadata']
+ //  println "metadata"
+ //   println root['@metadata']
    
-      println "metadata versioing"
-    println metadata.versioning
+ //     println "metadata versioing"
+ //   println metadata.versioning
     
-    println root['@versioning']
-   println root.parent().text
+  //  println root['@versioning']
+ //  println root.parent().text
     
-   print root.metadata.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
+ //  print root.metadata.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
     
 }
 pipeline {
