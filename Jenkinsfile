@@ -7,7 +7,7 @@ node(){
     println xml
   def root = new XmlParser().parseText(xml)
     println 'root print'
-    println root.@versioning
+    println root.@metadata
  
   println "metadata"
  //   println root['@metadata']
