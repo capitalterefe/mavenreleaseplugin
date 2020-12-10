@@ -19,7 +19,8 @@ pipeline {
                 sh(script:
                     
                     def xml = "https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar".toURL().text
-                    def root = new XmlParser().parseText(xml)
+                   echo 'xml $xml' 
+                   def root = new XmlParser().parseText(xml)
                     return root.data.artifact.collect {"${it.groupId.text()}:${it.artifactId.text()}:${it.version.text()}"}
                      
                     )
