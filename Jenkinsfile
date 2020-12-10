@@ -16,14 +16,19 @@ pipeline {
         stage('Build') {
             steps {
                
-                sh(script:
+                script{
+                 env.MYVAR = sh( script: " 'https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar'.toURL().text",
+                             returnStdout: true).trim()
+                 echo "MYVAR: ${env.MYVAR}"   
                     
-                    def xml = "https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar".toURL().text
-                   echo 'xml $xml' 
+                    // def xml = "https://repository.jboss.org/nexus/service/local/lucene/search?g=jboss&a=jboss-j2ee&r=releases&p=jar".toURL().text
+                  // echo 'xml $xml' 
                   // def root = new XmlParser().parseText(xml)
                   //  return root.data.artifact.collect {"${it.groupId.text()}:${it.artifactId.text()}:${it.version.text()}"}
                      
-                    )
+                    
+                }
+                
                 }
         }
         stage('Test') {
