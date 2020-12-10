@@ -46,8 +46,8 @@ pipeline {
     def colors = new XmlSlurper().parseText(xml)
                   //echo colors
     echo "First Color: ${colors.versioning[0]}" //works fine
-   echo "First Color: ${colors.versioning[0].versions[0]}" 
-       echo "First Color: ${colors.versioning[0].versions[1]}" 
+   echo "First Color: ${colors.versioning[0].versions[0]['@version'][0]}" 
+       echo "First Color: ${colors.versioning[0].versions[0]['@version'][1]}" 
 
                     
                 }
