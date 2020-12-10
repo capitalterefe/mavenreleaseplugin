@@ -9,7 +9,7 @@ node(){
 <testcase>
 Simple example of xml file
 </testcase>
-<testsuite>
+</testsuite>
 </testsuites> """  
   println xml
   def root = new XmlParser().parseText(xml)
