@@ -21,7 +21,7 @@ pipeline {
                 script{
                     
                     echo "${root}"
-                    echo root
+                   
                  root.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
                     
                 }
