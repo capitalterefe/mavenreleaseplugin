@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 def pom = readMavenPom file: 'pom.xml'
-                echo pom.version
+                echo "pom version pom.version"
             }
         }
         stage('Test') {
