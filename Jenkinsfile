@@ -26,7 +26,7 @@ pipeline {
                     
                     //echo "${root}"
                    
-                  //  echo "${rversions}"
+                   echo "hello builder"
                     
                 }
                 
