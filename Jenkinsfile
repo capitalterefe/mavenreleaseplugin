@@ -1,5 +1,5 @@
 node(){
-    def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".text
+    def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
    def root = new XmlParser().parseText(xml)
    println root.text()
     println root['@versioning']
