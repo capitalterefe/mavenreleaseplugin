@@ -7,7 +7,19 @@ pipeline {
     VERSION = readMavenPom().getVersion()
     GROUP = readMavenPom().getGroupId()
     }
+import groovy.json.JsonSlurper
 
+def getProjectVersion(){
+  def file = readFile('pom.xml')
+  def project = new XmlSlurper().parseText(file)
+  return project.version.text()
+}
+
+def getReleaseVersion(String artifact) {
+  def modelMetaData = new XmlSlurper().parse("https://oss.sonatype.org/content/repositories/releases/${artifact}/maven-metadata.xml")
+  def version = modelMetaData.versioning.release.text()
+  return version
+}
     stages {
                      
         
@@ -16,21 +28,9 @@ pipeline {
             steps {
                
                 script{
-                    
-                        echo 'Building..'
-                        echo "version ${VERSION}"
-                        echo "version ${ARTIFACT}"
-                        echo "version ${GROUP}"
-
-                    def host="https://msnexus.xxx.com"
-                    def groupId="com.xxx.cd".replaceAll("\\.", "/")
-                    def artifactId="common-log"
-                    def nexus_url="${host}/repository/public/${groupId}/${artifactId}/maven-metadata.xml"
-                    def nexus_url2="https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml"
-                    //def metadata = new XmlParser().parseText(nexus_url2)
-                   //metadatastr = metadata.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
-                    echo "metada: ${nexus_url2}"
-
+                    def versions=getProjectVersion()
+                    echo 'versioning $versions'
+                     
                     }
                 }
         }
@@ -45,4 +45,5 @@ pipeline {
             }
         }
     }
+    
 }
