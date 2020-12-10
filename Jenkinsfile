@@ -21,7 +21,7 @@ pipeline {
                
                 script{
                   
-                  def versions = curl -s "http://maven.wso2.org/nexus/content/repositories/snapshots/org/wso2/is/wso2is/maven-metadata.xml" | grep "<version>.*</version>" | sed -e "s#\(.*\)\(<latest>\)\(.*\)\(</latest>\)\(.*\)#\3#g"
+                  def versions = sh(script: 'curl -s http://maven.wso2.org/nexus/content/repositories/snapshots/org/wso2/is/wso2is/maven-metadata.xml | grep "<version>.*</version>" | sed -e "s#\(.*\)\(<latest>\)\(.*\)\(</latest>\)\(.*\)#\3#g"', returnStdout: true)
                   println versions
                     
                 }
