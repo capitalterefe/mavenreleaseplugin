@@ -1,12 +1,17 @@
 pipeline {
     agent any
+     
+    environment {
+    //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+    IMAGE = readMavenPom().getArtifactId()
+    VERSION = readMavenPom().getVersion()
+    }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building..'
-                def pom = readMavenPom file: 'pom.xml'
-                echo "pom version pom.version"
+                echo "version ${VERSION}"
             }
         }
         stage('Test') {
