@@ -1,6 +1,6 @@
 @NonCPS
 def servers(xml) {
-    new XmlParser().parseText(xml).Config.Servers.Server.collect{it.@Name}
+    new XmlParser().parseText(xml).Config.Servers.Server.collect{it['Name']}
 }
 
 node{
