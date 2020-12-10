@@ -1,4 +1,19 @@
 node(){
+    String xml = """
+<dogs>
+ <dog type="Beagle" sound="howl"/>
+ <dog type="Labrador" sound="woof"/>
+</dogs>"""
+
+XmlParser parser = new XmlParser()
+def dogs = parser.parseText (xml)
+
+dogs.dog.each { dog ->
+    println("${dog.'@type'} sounds like ${dog.'@sound'}");
+}
+    
+    
+    
     def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
     println xml
    def root = new XmlParser().parseText(xml)
