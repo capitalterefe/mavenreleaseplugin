@@ -4,9 +4,15 @@ node(){
  <dog type="Beagle" sound="howl"/>
  <dog type="Labrador" sound="woof"/>
 </dogs>"""
+    
+    println xml
 
 XmlParser parser = new XmlParser()
 def dogs = parser.parseText (xml)
+
+    println dogs
+    
+    dogs.'dog'[0].@type
 
 dogs.dog.each { dog ->
     println("${dog.'@type'} sounds like ${dog.'@sound'}");
