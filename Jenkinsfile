@@ -3,11 +3,18 @@ node(){
     
     
     
-    def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
-    println xml
+    //def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
+  def xml = """ <testsuites status="Failure" count="5" duration="10">
+<testsuite status="Failure">
+<testcase>
+Simple example of xml file
+</testcase>
+<testsuite>
+</testsuites> """  
+  println xml
   def root = new XmlParser().parseText(xml)
     println 'root print'
-    println root.@groupId
+    println root.@status
  
   println "metadata"
  //   println root['@metadata']
