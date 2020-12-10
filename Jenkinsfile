@@ -27,7 +27,7 @@ def getReleaseVersion(String artifact) {
             steps {
                
                 script{
-                    def versions=getProjectVersion()
+                    versions=getProjectVersion()
                     echo 'versioning $versions'
                      
                     }
