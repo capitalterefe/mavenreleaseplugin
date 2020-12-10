@@ -3,11 +3,15 @@ node(){
     println xml
    def root = new XmlParser().parseText(xml)
     println root
-   println "root txt" root.text()
+   println "root txt" 
+    root.text()
+   println "metadata"
+    println root.metadata.versioning
+    
     println root['@versioning']
    println root.parent().text
     
-   print root.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
+   print root.metadata.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
     
 }
 pipeline {
