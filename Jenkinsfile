@@ -1,22 +1,5 @@
 node(){
-    String xml = """
-<dogs>
- <dog type="Beagle" sound="howl"/>
- <dog type="Labrador" sound="woof"/>
-</dogs>"""
-    
-    println xml
-
-XmlParser parser = new XmlParser()
-def dogs = parser.parseText (xml)
-
-    println dogs
-    
-    dogs.'dog'[0].@type
-
-dogs.dog.each { dog ->
-    println("${dog.'@type'} sounds like ${dog.'@sound'}");
-}
+  
     
     
     
@@ -26,7 +9,7 @@ dogs.dog.each { dog ->
  //   println 'root print'
  //   println root
  
- //  println "metadata"
+  println "metadata"
  //   println root['@metadata']
    
  //     println "metadata versioing"
@@ -61,6 +44,20 @@ pipeline {
                     //echo "${root}"
                    
                    echo "hello builder"
+                    
+                    def xml = """
+              <colors>
+                  <color primary="true">Red</color>
+                  <color primary="true">Yellow</color>
+                  <color primary="true">Blue</color>
+                  <color primary="false">Purple</color>
+              </colors>                    
+              """
+
+    def colors = new XmlSlurper().parseText(xml)
+    echo "First Color: ${colors.color[0]}" //works fine
+    echo "First Color: ${colors.color[0]} Primary? ${colors.color[0]['@primary']}" 
+
                     
                 }
                 
