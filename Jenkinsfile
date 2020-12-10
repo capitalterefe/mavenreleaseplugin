@@ -6,7 +6,7 @@ node(){
     println root
  
    println "metadata"
-    println metadata
+    println root['@metadata']
    
       println "metadata versioing"
     println metadata.versioning
