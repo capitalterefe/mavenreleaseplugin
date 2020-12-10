@@ -1,27 +1,5 @@
-@NonCPS
-def servers(xml) {
-    new XmlParser().parseText(xml).Config.Servers.Server.collect{it['Name']}
-}
 
-node{
-    def paramxml="""
-                    
-                    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-                              <AS Name="123">
-                                  <Config Name="Configuration1">
-                                      <Servers>
-                                          <Server Name="server1"/>
-                                          <Server Name="server2"/>
-                                          <Server Name="server3"/>
-                                          <Server Name="server4"/>
-                                       </Servers>
-                                  </Config>
-                              </AS>
-                    
-                    """
-                  
-    println servers(paramxml)
-}
+
 
 pipeline {
     agent any
@@ -43,8 +21,8 @@ pipeline {
                
                 script{
                   
-                    print hello
-                  
+                  def versions = curl -s "http://maven.wso2.org/nexus/content/repositories/snapshots/org/wso2/is/wso2is/maven-metadata.xml" | grep "<version>.*</version>" | sed -e "s#\(.*\)\(<latest>\)\(.*\)\(</latest>\)\(.*\)#\3#g"
+                  println versions
                     
                 }
                 
