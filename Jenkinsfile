@@ -1,22 +1,28 @@
-node(){
-  
-    
-    
-    
-   // def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
- 
-  println "metadata"
- //   println root['@metadata']
-   
- //     println "metadata versioing"
- //   println metadata.versioning
-    
-  //  println root['@versioning']
- //  println root.parent().text
-    
- //  print root.metadata.versioning.versions.version.takeRight(5).collect({it.text()}).reverse()
-    
+@NonCPS
+def servers(xml) {
+    new XmlParser().parseText(xml).Config.Servers.Server.collect{it.@Name}
 }
+
+node{
+    def paramxml="""
+                    
+                    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                              <AS Name="123">
+                                  <Config Name="Configuration1">
+                                      <Servers>
+                                          <Server Name="server1"/>
+                                          <Server Name="server2"/>
+                                          <Server Name="server3"/>
+                                          <Server Name="server4"/>
+                                       </Servers>
+                                  </Config>
+                              </AS>
+                    
+                    """
+                  
+    println servers(paramxml)
+}
+
 pipeline {
     agent any
      
@@ -36,19 +42,9 @@ pipeline {
             steps {
                
                 script{
-                    
-                    //echo "${root}"
-                   
-                   echo "hello builder"
-                    
-                    def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
-                      echo xml
-    def colors = new XmlSlurper().parseText(xml)
-                  //echo colors
-    echo "First Color: ${colors.versioning[0]}" //works fine
-   echo "First Color: ${colors.versioning[0].versions[0]['@version'][0]}" 
-       echo "First Color: ${colors.versioning[0].versions[0]['@version'][1]}" 
-
+                  
+                    print hello
+                  
                     
                 }
                 
@@ -67,3 +63,5 @@ pipeline {
     }
     
 }
+
+
