@@ -3,11 +3,11 @@ node(){
     
     
     
-   // def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
- //   println xml
- //  def root = new XmlParser().parseText(xml)
- //   println 'root print'
- //   println root
+    def xml = "https://repo.adobe.com/nexus/content/groups/public/ant/ant/maven-metadata.xml".toURL().text
+    println xml
+  def root = new XmlParser().parseText(xml)
+    println 'root print'
+    println root.@versioning
  
   println "metadata"
  //   println root['@metadata']
@@ -54,7 +54,7 @@ pipeline {
               </colors>                    
               """
 
-    def colors = new XmlParser().parseText(xml)
+    def colors = new XmlSlurper().parseText(xml)
     echo "First Color: ${colors.color[0]}" //works fine
     echo "First Color: ${colors.color[0]} Primary? ${colors.color[0]['@primary']}" 
 
