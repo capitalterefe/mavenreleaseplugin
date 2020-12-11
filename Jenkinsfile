@@ -41,7 +41,7 @@ pipeline {
                         parameters: [choice(name: 'RELEASE_SCOPE', choices: "Angular\nGroovy\nJava", description: 'What is the release scope?')]  
                     
                     
-                    echo " The environment is ${params.RELEASE_SCOPE}"
+                    echo " The environment is ${params.myParameter}"
                     
                   def metad = "http://maven.wso2.org/nexus/content/repositories/snapshots/org/wso2/is/wso2is/maven-metadata.xml"
                     def versions = sh(script: "curl -s ${metad} | grep version", returnStdout: true).trim()
