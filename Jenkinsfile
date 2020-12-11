@@ -3,12 +3,23 @@
 
 pipeline {
     agent any
-    parameters {
+   
+    
+    
+     def releaseScope = ["Angular", "Groovy", "Java"];
+     def releaseScopeChoices = ''
+     releaseScope.each {
+        releaseScopeChoices += it + '\\n'
+    }
+    println releaseScopeChoices
+    
+     parameters {
     choice(
         name: 'myParameter',
-        choices: "Option1\nOption2",
+        choices: "${releaseScopeChoices}",
         description: 'interesting stuff' )
   }   
+    
     
     environment {
         //https://repo.adobe.com/nexus/service/local/lucene/search?g=ant&a=ant
