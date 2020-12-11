@@ -4,7 +4,12 @@
 pipeline {
     agent any
    
-    
+    parameters {
+                        choice(
+                            name: 'myParameter',
+                            choices: "a\nb\nc",
+                            description: 'interesting stuff' )
+                      }   
  
     
    
@@ -27,14 +32,16 @@ pipeline {
             steps {
                
                 script{
-                      parameters {
-                        choice(
-                            name: 'myParameter',
-                            choices: "a\nb\nc",
-                            description: 'interesting stuff' )
-                      }   
-                        
-                    echo " The environment is ${params.myParameter}"
+                        def releaseScope = ["Angular", "Groovy", "Java"];
+                        def releaseScopeChoices = ''
+                        releaseScope.each {
+                            releaseScopeChoices += it + '\\n'
+                        }
+                        println releaseScopeChoices
+                        parameters: [choice(name: 'RELEASE_SCOPE', choices: "Angular\nGroovy\nJava", description: 'What is the release scope?')]  
+                    
+                    
+                    echo " The environment is ${params.RELEASE_SCOPE}"
                     
                   def metad = "http://maven.wso2.org/nexus/content/repositories/snapshots/org/wso2/is/wso2is/maven-metadata.xml"
                     def versions = sh(script: "curl -s ${metad} | grep version", returnStdout: true).trim()
