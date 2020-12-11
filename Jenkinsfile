@@ -3,14 +3,13 @@
 
 pipeline {
     agent any
-     def releaseScope = ["Angular", "Groovy", "Java"];
-    def releaseScopeChoices = ''
-    releaseScope.each {
-        releaseScopeChoices += it + '\\n'
-    }
-    println releaseScopeChoices
-    parameters: [choice(name: 'RELEASE_SCOPE', choices: "Angular\nGroovy\nJava", description: 'What is the release scope?')]
-
+    parameters {
+    choice(
+        name: 'myParameter',
+        choices: "Option1\nOption2",
+        description: 'interesting stuff' )
+  }   
+    
     environment {
         //https://repo.adobe.com/nexus/service/local/lucene/search?g=ant&a=ant
     //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
