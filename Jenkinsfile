@@ -26,8 +26,8 @@ pipeline {
                         releaseScope.each {
                             releaseScopeChoices += it + '\n'
                         }
-
-                        parameters: [choice(name: 'RELEASE_SCOPE', choices: ${releaseScopeChoices}, description: 'What is the release scope?')]
+                        println releaseScopeChoices
+                        //parameters: [choice(name: 'RELEASE_SCOPE', choices: ${releaseScopeChoices}, description: 'What is the release scope?')]
 
                     
                     
