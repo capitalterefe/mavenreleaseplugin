@@ -39,7 +39,7 @@ pipeline {
                         }
                         println releaseScopeChoices
                         releasev= input message: 'select version to deploy : ', 
-                            parameters: [ choice (name: 'Environment to deploy to' , choices: "${releaseScopeChoices}", description: 'choose env')]
+                            parameters: [ choice (name: 'Environment to deploy to' , choices: '"${releaseScopeChoices}"', description: 'choose env')]
                        
                     
                     
