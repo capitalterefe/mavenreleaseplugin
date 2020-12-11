@@ -5,6 +5,7 @@ pipeline {
     agent any
      
     environment {
+        //https://repo.adobe.com/nexus/service/local/lucene/search?g=ant&a=ant
     //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
     ARTIFACT = readMavenPom().getArtifactId()
     VERSION = readMavenPom().getVersion()
