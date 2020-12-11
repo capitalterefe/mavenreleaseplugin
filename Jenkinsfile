@@ -3,7 +3,14 @@
 
 pipeline {
     agent any
-     
+     def releaseScope = ["Angular", "Groovy", "Java"];
+    def releaseScopeChoices = ''
+    releaseScope.each {
+        releaseScopeChoices += it + '\\n'
+    }
+    println releaseScopeChoices
+    parameters: [choice(name: 'RELEASE_SCOPE', choices: "Angular\nGroovy\nJava", description: 'What is the release scope?')]
+
     environment {
         //https://repo.adobe.com/nexus/service/local/lucene/search?g=ant&a=ant
     //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
@@ -21,14 +28,7 @@ pipeline {
             steps {
                
                 script{
-                        def releaseScope = ["Angular", "Groovy", "Java"];
-                        def releaseScopeChoices = ''
-                        releaseScope.each {
-                            releaseScopeChoices += it + '\\n'
-                        }
-                        println releaseScopeChoices
-                        parameters: [choice(name: 'RELEASE_SCOPE', choices: "Angular\nGroovy\nJava", description: 'What is the release scope?')]
-
+                        
                     
                     
                   def metad = "http://maven.wso2.org/nexus/content/repositories/snapshots/org/wso2/is/wso2is/maven-metadata.xml"
