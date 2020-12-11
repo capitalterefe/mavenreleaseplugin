@@ -5,19 +5,9 @@ pipeline {
     agent any
    
     
-    releaseScope = ["Angular", "Groovy", "Java"];
-   releaseScopeChoices = ''
-  releaseScope.each {
-      releaseScopeChoices += it + '\\n'
-  }
-   println releaseScopeChoices
+ 
     
-     parameters {
-    choice(
-        name: 'myParameter',
-        choices: "a\nb\nc",
-        description: 'interesting stuff' )
-  }   
+   
     
     
     environment {
@@ -37,6 +27,12 @@ pipeline {
             steps {
                
                 script{
+                      parameters {
+                        choice(
+                            name: 'myParameter',
+                            choices: "a\nb\nc",
+                            description: 'interesting stuff' )
+                      }   
                         
                     echo " The environment is ${params.myParameter}"
                     
