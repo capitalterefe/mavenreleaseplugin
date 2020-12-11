@@ -4,9 +4,10 @@
 pipeline {
     agent any
    
-    
-    
-     def releaseScope = ["Angular", "Groovy", "Java"];
+    node(){
+     def amin= [ "arial","mango","soap"];   
+    }
+    // def releaseScope = ["Angular", "Groovy", "Java"];
    //  def releaseScopeChoices = ''
  //    releaseScope.each {
  //       releaseScopeChoices += it + '\\n'
