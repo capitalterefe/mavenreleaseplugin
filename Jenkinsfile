@@ -16,7 +16,7 @@ pipeline {
      parameters {
     choice(
         name: 'myParameter',
-        choices: "${releaseScopeChoices}",
+        choices: "a\nb\nc",
         description: 'interesting stuff' )
   }   
     
