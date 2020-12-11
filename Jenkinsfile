@@ -38,7 +38,9 @@ pipeline {
                             releaseScopeChoices += it + '\\n'
                         }
                         println releaseScopeChoices
-                        parameters: [choice(name: 'RELEASE_SCOPE', choices: "Angular\nGroovy\nJava", description: 'What is the release scope?')]  
+                        releasev= input message: 'select version to deploy : ', 
+                            parameters: [ choice (name: 'Environment to deploy to' , choices: 'SAT-A\nSAT-B', description: 'choose env')]
+                       
                     
                     
                     echo " The environment is ${params.myParameter}"
