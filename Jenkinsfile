@@ -21,6 +21,10 @@ pipeline {
     ARTIFACT = readMavenPom().getArtifactId()
     VERSION = readMavenPom().getVersion()
     GROUP = readMavenPom().getGroupId()
+    branch1 = 'stack'
+    branch2 = 'over'
+    branch3 = 'flow'
+
     }
 
 
@@ -32,15 +36,9 @@ pipeline {
             steps {
                
                 script{
-                        def releaseScope = ["Angular", "Groovy", "Java"];
-                        println releaseScope[0]
-                        def releaseScopeChoices = ''
-                        releaseScope.each {
-                            releaseScopeChoices += it + '\\n'
-                        }
-                        println releaseScopeChoices
+                       
                         releasev= input message: 'select version to deploy : ', 
-                            parameters: [ choice (name: 'Environment to deploy to' , choices: '"${releaseScopeChoices}"', description: 'choose env')]
+                            parameters: [ choice (name: 'Environment to deploy to' , choices: "${branch1}\n${branch2}\n${branch3}", description: 'choose env')]
                        
                     
                     
