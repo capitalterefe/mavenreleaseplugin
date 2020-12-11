@@ -33,6 +33,7 @@ pipeline {
                
                 script{
                         def releaseScope = ["Angular", "Groovy", "Java"];
+                        println releaseScope[0]
                         def releaseScopeChoices = ''
                         releaseScope.each {
                             releaseScopeChoices += it + '\\n'
