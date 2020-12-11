@@ -6,12 +6,12 @@ pipeline {
    
     
     
-     def releaseScope = ["Angular", "Groovy", "Java"];
-     def releaseScopeChoices = ''
-     releaseScope.each {
-        releaseScopeChoices += it + '\\n'
-    }
-    println releaseScopeChoices
+     //def releaseScope = ["Angular", "Groovy", "Java"];
+   //  def releaseScopeChoices = ''
+ //    releaseScope.each {
+ //       releaseScopeChoices += it + '\\n'
+ //   }
+//    println releaseScopeChoices
     
      parameters {
     choice(
