@@ -44,13 +44,18 @@ pipeline {
                     
                     echo " The environment is ${params.myParameter}"
                     
-             def versions = sh(script: "curl -s https://repo1.maven.org/maven2/org/brutusin/wava/maven-metadata.xml | grep -Po '(?<=<version>)([0-9\\.]+(-SNAPSHOT)?)' | sort --version-sort -r | head -n 5", returnStdout: true).trim()
+             def versions = sh(script: "curl -s https://repo1.maven.org/maven2/org/brutusin/wava/maven-metadata.xml | grep -Po '(?<=<version>)([0-9\\.]+(-SNAPSHOT)?)' | sort --version-sort -r | head -n 5", returnStdout: true).trim().split("\r?\n")
                      //   def versions = sh(script: "curl -s https://repo1.maven.org/maven2/org/brutusin/wava/maven-metadata.xml", returnStdout: true).trim()
           
       //            def metad = "http://maven.wso2.org/nexus/content/repositories/snapshots/org/wso2/is/wso2is/maven-metadata.xml"
         //            def versions = sh(script: "curl -s ${metad} | grep version", returnStdout: true).trim()
 //                   def versions = sh(script: "curl -s ${metad} | grep '<version>.*</version>' | sed -e 's#\(.*\)\(<latest>\)\(.*\)\(</latest>\)\(.*\)#\3#g'", returnStdout: true)
-                   println versions
+                      int top = versions.size()
+    			    IP_HUB = "${versions[top-2]}"
+    			    NETWORK = "${versions[top-1]}"
+                    println("Grid parameters: $IP_HUB / $NETWORK")
+
+                    println("Grid yuy: $top")
                     
                 }
                 
