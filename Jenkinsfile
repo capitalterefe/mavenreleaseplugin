@@ -38,9 +38,10 @@ pipeline {
                     
             def versions = sh(script: "curl -s https://repo1.maven.org/maven2/org/brutusin/wava/maven-metadata.xml | grep -Po '(?<=<version>)([0-9\\.]+(-SNAPSHOT)?)' | sort --version-sort -r | head -n 3", returnStdout: true).trim().split("\r?\n")
             int top = versions.size()
-            VERSION_I = "${versions[top-2]}"
-            VERSION_II = "${versions[top-1]}"
-            VERSION_III = "${versions[top-0]}"        
+            VERSION_III = "${versions[top-3]}"
+            VERSION_II = "${versions[top-2]}"        
+            VERSION_I = "${versions[top-1]}"
+                
             println("Version1: $VERSION_I \n Version11 $VERSION_II \n Version111 $VERSION_III ")
 
 
