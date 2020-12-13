@@ -38,15 +38,15 @@ pipeline {
                     
             def versions = sh(script: "curl -s https://repo1.maven.org/maven2/org/brutusin/wava/maven-metadata.xml | grep -Po '(?<=<version>)([0-9\\.]+(-SNAPSHOT)?)' | sort --version-sort -r | head -n 3", returnStdout: true).trim().split("\r?\n")
             int top = versions.size()
-            VERSION_III = "${versions[top-3]}"
-            VERSION_II = "${versions[top-2]}"        
-            VERSION_I = "${versions[top-1]}"
+            LATEST = "${versions[top-3]}"
+            PREVIOUS = "${versions[top-2]}"        
+            OLD = "${versions[top-1]}"
                 
-            println("Version1: $VERSION_I \n Version11 $VERSION_II \n Version111 $VERSION_III ")
+            println("$versions")
 
 
             deploy_version= input message: 'select version to deploy : ', 
-            parameters: [ choice (name: 'Environment to deploy to' , choices: "${VERSION_I}\n${VERSION_II}\n${VERSION_II}", description: 'choose env')]
+            parameters: [ choice (name: 'Environment to deploy to' , choices: "${LATEST}\n${PREVIOUS}\n${OLD}", description: 'choose env')]
             echo " The environment is ${params.myParameter}"
             echo " The environment is ${deploy_version}"
                 }
